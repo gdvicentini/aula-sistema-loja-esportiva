@@ -8,7 +8,7 @@ public class Usuario {
 
     public Usuario(Long id, String nome, String login, String senha, boolean ativo) {
         if (login == null || login.isBlank()) {
-            throw new IllegalArgumentException(("Login não pode ser vazio"));
+            throw new IllegalArgumentException("Login não pode ser vazio");
         }
         this.id = id;
         this.nome = nome;
