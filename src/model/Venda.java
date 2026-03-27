@@ -1,3 +1,5 @@
+package model;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -23,16 +25,8 @@ public class Venda {
         this.valorTotal = BigDecimal.ZERO;
     }
 
-    public void adicionarItem(Estoque estoque, int quantidade) {
-        if (!estoque.temDisponivel(quantidade)) {
-            throw new IllegalArgumentException("Estoque insuficiente");
-        }
-
-        estoque.reduzir(quantidade);
-
-        ItemVenda item = new ItemVenda(this, estoque.getProduto(), quantidade);
+    public void adicionarItem(ItemVenda item) {
         itens.add(item);
-
         recalcularTotal();
     }
 
@@ -42,19 +36,19 @@ public class Venda {
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
+    public BigDecimal getValorTotal() {
+        return valorTotal;
+    }
+
 //    private void recalcularTotal() {
 //        BigDecimal total = BigDecimal.ZERO;
 //
-//        for (ItemVenda item : itens) {
+//        for (model.ItemVenda item : itens) {
 //            total = total.add(item.getSubtotal());
 //        }
 //
 //        this.valorTotal = total;
 //    }
-
-    public BigDecimal getValorTotal() {
-        return valorTotal;
-    }
 
     public List<ItemVenda> getItens() {
         return itens;

@@ -1,3 +1,5 @@
+package model;
+
 public class
 Estoque {
 
@@ -20,7 +22,7 @@ Estoque {
 
     public void reduzir(int quantidade) {
         if (!temDisponivel(quantidade)) {
-            throw new IllegalArgumentException("Estoque insuficiente");
+            throw new IllegalArgumentException("model.Estoque insuficiente");
         }
         quantidadeDisponivel -= quantidade;
     }
